@@ -1,0 +1,40 @@
+function generateRandomNumber(num) {
+    // Gets a random # from 0 -> num - 1
+    return Math.floor(Math.random() * num);
+}
+
+const inspiredMessage = {
+    statusInfo: ['Rockstar', 'Legend', 'Superstar', 'Trailblazer'],
+    statusOutput: ['nothing is standing in your way', 'obstacles are just learning paths', 'every day brings new opportunities', 'the glass is always half full'],
+    advice: ['reach for the stars', 'start a new adventure', 'crush it', 'keep crushing it']
+}
+
+// Store inspirational quotes in an array
+let inspiredQuotes = [];
+
+//Iterate over the object
+for (let prop in inspiredMessage) {
+    let optionId = generateRandomNumber(inspiredMessage[prop].length);
+
+    // use the properties in the object to create a cusomized inspirational message and add to inspiredQuotes
+    switch(prop) {
+        case 'statusInfo':
+            inspiredQuotes.push(`You are a true ${inspiredMessage[prop][optionId]}!`);
+            break;
+        case 'statusOutput':
+            inspiredQuotes.push(`Remember that ${inspiredMessage[prop][optionId]}.`);
+            break;
+        case 'advice':
+            inspiredQuotes.push(`And don't forget to ${inspiredMessage[prop][optionId]}.`);
+            break;
+        default:
+            inspiredQuotes.push(`Not enough info`);
+    }
+}
+
+function formatQuotes(quotes) {
+    const formatted = inspiredQuotes.join('\n');
+    console.log(formatted);
+}
+
+formatQuotes(inspiredQuotes);
